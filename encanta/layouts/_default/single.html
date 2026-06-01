@@ -1,0 +1,41 @@
+{{ define "main" }}
+  {{ $tocEnabled := ne site.Params.article.toc false }}
+  {{ $hasToc := and $tocEnabled .TableOfContents }}
+  <article class="article">
+    <header class="article-header">
+      <p class="eyebrow">{{ .Date.Format "2006-01-02" }}</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.tags }}
+        <ul class="article-tags" aria-label="Tags">
+          {{ range . }}
+            <li>#{{ . }}</li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    </header>
+
+    <div class="article-layout{{ if $hasToc }} article-layout-has-toc{{ end }}">
+      {{ if $hasToc }}
+        <aside class="article-toc">
+          <h2>Contents</h2>
+          {{ .TableOfContents }}
+        </aside>
+      {{ end }}
+
+      <div class="article-body">
+        {{ .Content }}
+      </div>
+    </div>
+
+    <nav class="article-pagination" aria-label="Article navigation">
+      {{ with .PrevInSection }}
+        <a class="article-nav-link" href="{{ .RelPermalink }}">← {{ .Title }}</a>
+      {{ end }}
+      {{ with .NextInSection }}
+        <a class="article-nav-link article-nav-link-next" href="{{ .RelPermalink }}">{{ .Title }} →</a>
+      {{ end }}
+    </nav>
+
+    {{ partial "comments.html" . }}
+  </article>
+{{ end }}

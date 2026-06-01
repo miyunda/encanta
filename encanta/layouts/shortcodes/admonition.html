@@ -1,0 +1,9 @@
+{{ $kind := .Get 0 | default "note" }}
+{{ $title := .Get 1 | default ($kind | humanize) }}
+
+<aside class="admonition admonition-{{ $kind }}" data-admonition="{{ $kind }}">
+  <div class="admonition-title">{{ $title }}</div>
+  <div class="admonition-body">
+    {{ .Inner | markdownify }}
+  </div>
+</aside>

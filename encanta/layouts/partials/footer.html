@@ -1,0 +1,18 @@
+{{ $footerTitle := site.Params.brand.footerTitle | default site.Title }}
+<footer class="site-footer">
+  <div class="site-footer-meta">
+    <p>{{ site.Params.footer.copyright | default (printf "© %d %s" now.Year $footerTitle) }}</p>
+    {{ with site.Params.footer.sponsor }}
+      <p>{{ . }}</p>
+    {{ end }}
+    {{ with site.Params.footer.icp }}
+      <p>{{ . }}</p>
+    {{ end }}
+  </div>
+
+  <nav class="site-footer-links" aria-label="Footer">
+    {{ range site.Params.footer.links }}
+      <a href="{{ .url }}">{{ .name }}</a>
+    {{ end }}
+  </nav>
+</footer>

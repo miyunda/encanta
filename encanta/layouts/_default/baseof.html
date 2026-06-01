@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang | default `en` }}" data-theme="system">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ block "title" . }}{{ if .IsHome }}{{ site.Params.brand.browserTitle | default site.Title }}{{ else }}{{ .Title }} | {{ site.Params.brand.browserTitle | default site.Title }}{{ end }}{{ end }}</title>
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with site.Params.description }}{{ . }}{{ else }}{{ site.Title }}{{ end }}{{ end }}">
+    <link rel="icon" href="{{ site.Params.icons.favicon | default `/favicon.ico` }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ site.Params.icons.favicon32 | default `/favicon-32x32.png` }}">
+    <link rel="apple-touch-icon" href="{{ site.Params.icons.appleTouch | default `/apple-touch-icon.png` }}">
+    {{ with site.Params.icons.manifest }}
+      <link rel="manifest" href="{{ . }}">
+    {{ else }}
+      <link rel="manifest" href="/site.webmanifest">
+    {{ end }}
+    {{ if and .IsPage site.Params.waline.enable site.Params.waline.serverURL }}
+      <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+    {{ end }}
+    {{ partial "theme-init.html" . }}
+    {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+    {{ block "head" . }}{{ end }}
+  </head>
+  <body>
+    <div class="site-shell">
+      {{ partial "header.html" . }}
+      <main class="site-main">
+        {{ block "main" . }}{{ end }}
+      </main>
+      {{ partial "footer.html" . }}
+    </div>
+    {{ $js := resources.Get "js/main.js" | minify | fingerprint }}
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+  </body>
+</html>

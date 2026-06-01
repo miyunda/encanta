@@ -1,0 +1,21 @@
+{{ define "main" }}
+  {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+  <section class="page-intro">
+    <div>
+      <p class="eyebrow">Latest Writing</p>
+      <h1>{{ site.Title }}</h1>
+    </div>
+    <p class="lede">{{ site.Params.description }}</p>
+  </section>
+
+  <section class="post-grid" aria-label="Article list">
+    {{ range $pages.ByDate.Reverse }}
+      {{ partial "post-card.html" . }}
+    {{ else }}
+      <article class="empty-state">
+        <h2>No posts yet</h2>
+        <p>Add Markdown content under <code>content/posts/</code> to populate the site.</p>
+      </article>
+    {{ end }}
+  </section>
+{{ end }}

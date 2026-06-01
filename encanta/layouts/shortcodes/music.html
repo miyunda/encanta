@@ -1,0 +1,43 @@
+{{ $url := .Get "url" }}
+{{ $name := .Get "name" | default "Untitled" }}
+{{ $artist := .Get "artist" | default "" }}
+{{ $cover := .Get "cover" }}
+{{ $server := .Get "server" | default "" }}
+{{ $type := .Get "type" | default "song" }}
+{{ $id := .Get "id" | default "" }}
+{{ $auto := .Get "auto" | default "" }}
+
+{{ if and (eq $server "netease") $id }}
+  {{ $neteaseType := cond (eq $type "playlist") "1" "2" }}
+  <figure class="embed-frame embed-frame-music">
+    <iframe
+      src="//music.163.com/outchain/player?type={{ $neteaseType }}&id={{ $id }}&auto=0&height=86"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      frameborder="no"
+      border="0"
+      marginwidth="0"
+      marginheight="0"
+      allow="autoplay">
+    </iframe>
+  </figure>
+{{ else if $auto }}
+  <figure class="media-card media-card-link">
+    <figcaption class="media-card-body">
+      <strong>External audio</strong>
+      <p>This track is hosted by a third-party platform.</p>
+      <p><a href="{{ $auto }}" target="_blank" rel="noreferrer">Open in player</a></p>
+    </figcaption>
+  </figure>
+{{ else }}
+  <figure class="media-card media-card-audio">
+    {{ with $cover }}
+      <img class="media-card-cover" src="{{ . }}" alt="">
+    {{ end }}
+    <figcaption class="media-card-body">
+      <strong>{{ $name }}</strong>
+      {{ with $artist }}<p>{{ . }}</p>{{ end }}
+      <audio controls preload="none" src="{{ $url }}"></audio>
+    </figcaption>
+  </figure>
+{{ end }}

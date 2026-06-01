@@ -1,0 +1,52 @@
+baseURL = "https://example.org/"
+languageCode = "en-us"
+title = "encanta"
+theme = "encanta"
+
+[params]
+  description = "A personal blog theme with Rosé Pine palettes, adaptive cards, and rich Markdown support."
+  mainSections = ["posts"]
+  defaultFeaturedImage = "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80"
+
+  [params.brand]
+    headerTitle = "encanta"
+    browserTitle = "encanta"
+    footerTitle = "encanta"
+
+  [params.icons]
+    favicon = "/favicon.ico"
+    favicon32 = "/favicon-32x32.png"
+    appleTouch = "/apple-touch-icon.png"
+    manifest = "/site.webmanifest"
+
+  [params.article]
+    toc = true
+
+  [params.footer]
+    copyright = "© 2026 encanta"
+    sponsor = "Sponsored by tea, persistence, and long-form notes."
+    icp = ""
+    [[params.footer.links]]
+      name = "GitHub"
+      url = "https://github.com/example/encanta-hugo-theme"
+    [[params.footer.links]]
+      name = "License"
+      url = "https://opensource.org/licenses/MIT"
+
+[menu]
+  [[menu.main]]
+    name = "Articles"
+    url = "/"
+    weight = 10
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 20
+  [[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 30
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 40

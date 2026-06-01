@@ -1,0 +1,34 @@
+{{ if and .IsPage site.Params.waline.enable site.Params.waline.serverURL }}
+  {{ $tocEnabled := ne site.Params.article.toc false }}
+  {{ $hasToc := and $tocEnabled .TableOfContents }}
+  <section class="comments-section{{ if $hasToc }} comments-section-has-toc{{ end }}">
+    <div class="comments-shell">
+      <h2>评论</h2>
+      <div id="waline"></div>
+    </div>
+  </section>
+  <script type="module">
+    import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+
+    init({
+      el: '#waline',
+      serverURL: {{ site.Params.waline.serverURL | jsonify }},
+      lang: {{ site.Params.waline.lang | default "zh-CN" | jsonify }},
+      pageview: {{ site.Params.waline.pageview | default false }},
+      emoji: {{ site.Params.waline.emoji | default (slice) | jsonify }},
+      meta: {{ site.Params.waline.meta | default (slice "nick" "mail" "link") | jsonify }},
+      requiredMeta: {{ site.Params.waline.requiredMeta | default (slice) | jsonify }},
+      login: {{ site.Params.waline.login | default "enable" | jsonify }},
+      wordLimit: {{ site.Params.waline.wordLimit | default 0 }},
+      pageSize: {{ site.Params.waline.pageSize | default 10 }},
+      imageUploader: {{ site.Params.waline.imageUploader | default false }},
+      highlighter: {{ site.Params.waline.highlighter | default false }},
+      comment: {{ site.Params.waline.comment | default false }},
+      texRenderer: {{ site.Params.waline.texRenderer | default false }},
+      search: {{ site.Params.waline.search | default false }},
+      recaptchaV3Key: {{ site.Params.waline.recaptchaV3Key | default "" | jsonify }},
+      reaction: {{ site.Params.waline.reaction | default false }},
+      path: window.location.pathname,
+    });
+  </script>
+{{ end }}

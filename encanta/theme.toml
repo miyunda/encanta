@@ -1,0 +1,12 @@
+name = "encanta"
+license = "MIT"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "A static-first Hugo theme for a personal blog with Rosé Pine palettes, adaptive article cards, and rich content support."
+homepage = "https://github.com/example/encanta-hugo-theme"
+tags = ["blog", "responsive", "rose-pine", "dark-mode", "personal"]
+features = ["adaptive-grid", "theme-switching", "taxonomies", "waline-ready", "rich-markdown"]
+min_version = "0.120.0"
+
+[author]
+  name = "encanta contributors"
+  homepage = "https://github.com/example/encanta-hugo-theme"

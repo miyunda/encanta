@@ -1,0 +1,41 @@
+{{ $image := .Params.FeaturedImage | default site.Params.defaultFeaturedImage }}
+{{ $rawContent := .RawContent | default "" }}
+{{ $normalizedContent := replaceRE `<!--\s*more\s*-->` "<!--more-->" $rawContent }}
+{{ $manualSummary := "" }}
+{{ if in $normalizedContent "<!--more-->" }}
+  {{ $manualSummary = index (split $normalizedContent "<!--more-->") 0 | markdownify | plainify | strings.TrimSpace }}
+{{ end }}
+<article class="post-card">
+  <a class="post-card-link" href="{{ .RelPermalink }}">
+    <div class="post-card-media">
+      {{ if $image }}
+        <img src="{{ $image }}" alt="" loading="lazy">
+      {{ else }}
+        <div class="post-card-media-fallback">No Image</div>
+      {{ end }}
+    </div>
+    <div class="post-card-body">
+      <p class="post-card-date">{{ .Date.Format "2006-01-02" }}</p>
+      <h2>{{ .Title }}</h2>
+      <p class="post-card-summary">
+        {{ with $manualSummary }}
+          {{ . | truncate 180 }}
+        {{ else }}
+          {{ with .Summary }}
+            {{ . | plainify | truncate 180 }}
+          {{ else }}
+            {{ .Plain | truncate 180 }}
+          {{ end }}
+        {{ end }}
+      </p>
+      <div class="post-card-meta">
+        {{ with .Params.categories }}
+          <span>{{ index . 0 }}</span>
+        {{ end }}
+        {{ with .Params.tags }}
+          <span>#{{ index . 0 }}</span>
+        {{ end }}
+      </div>
+    </div>
+  </a>
+</article>

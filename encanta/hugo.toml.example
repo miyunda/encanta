@@ -1,0 +1,117 @@
+# Example configuration for the encanta Hugo theme.
+# Copy the parts you need into your site's hugo.toml and adjust values.
+
+baseURL = "https://example.org/"
+languageCode = "zh-CN"
+title = "My Blog"
+
+# If you install the theme through Hugo Modules, import it like this:
+[module]
+  [[module.imports]]
+    path = "github.com/<owner>/encanta"
+
+[params]
+  # Short site description used on the home page and as a metadata fallback.
+  description = "A personal blog powered by Hugo and the encanta theme."
+
+  # Sections to show on the homepage list.
+  mainSections = ["posts"]
+
+  # Optional default image used when a post does not define FeaturedImage.
+  defaultFeaturedImage = "/images/default-cover.jpg"
+
+  [params.brand]
+    # Visible text in the site header.
+    headerTitle = "Welcome to My Blog"
+    # Text used in browser tabs and page titles.
+    browserTitle = "My Blog"
+    # Text used by the footer default copyright line.
+    footerTitle = "My Blog"
+
+  [params.article]
+    # Show TOC by default on article pages.
+    toc = true
+
+  [params.footer]
+    # Optional custom copyright line.
+    copyright = "© 2026 My Blog"
+    # Optional sponsor or support message.
+    sponsor = "Supported by readers, tea, and spare time."
+    # Optional Mainland China ICP record text.
+    icp = ""
+
+    # Footer links shown on the right side of the footer.
+    [[params.footer.links]]
+      name = "GitHub"
+      url = "https://github.com/<owner>/<repo>"
+
+    [[params.footer.links]]
+      name = "License"
+      url = "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+
+  [params.icons]
+    # Default icon paths. Put the files into your site's static/ directory.
+    favicon = "/favicon.ico"
+    favicon32 = "/favicon-32x32.png"
+    appleTouch = "/apple-touch-icon.png"
+    manifest = "/site.webmanifest"
+
+  [params.waline]
+    # Enable Waline comments on article pages.
+    enable = true
+    # Use a full URL with protocol.
+    serverURL = "https://waline.example.com"
+    # UI language.
+    lang = "zh-CN"
+    # Disable pageview counter by default.
+    pageview = false
+    # Optional emoji pack list.
+    emoji = ["//unpkg.com/@waline/emojis@1.1.0/weibo"]
+    # Visible fields in the comment form.
+    meta = ["nick", "mail", "link"]
+    # Required fields in the comment form.
+    requiredMeta = []
+    # Login behavior: "enable", "disable", or "force".
+    login = "enable"
+    # 0 means no word limit.
+    wordLimit = 0
+    # Number of comments per page.
+    pageSize = 10
+    # Whether image upload is enabled in the comment box.
+    imageUploader = false
+    # Disable Waline's own code highlighter because the theme styles article code separately.
+    highlighter = false
+    # Disable internal comment markdown rendering enhancements you do not need.
+    comment = false
+    texRenderer = false
+    search = false
+    recaptchaV3Key = ""
+    reaction = false
+
+# Main navigation shown in the header.
+[menu]
+  [[menu.main]]
+    name = "Articles"
+    url = "/"
+    weight = 10
+
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 20
+
+  [[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 30
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 40
+
+# Required if you use raw HTML such as iframe embeds in Markdown content.
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

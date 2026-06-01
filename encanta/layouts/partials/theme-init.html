@@ -1,0 +1,7 @@
+<script>
+  (() => {
+    const key = "encanta-theme";
+    const saved = localStorage.getItem(key) || "system";
+    document.documentElement.dataset.theme = saved;
+  })();
+</script>
