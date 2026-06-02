@@ -26,7 +26,6 @@
 ├── README_CN.md
 ├── assets/
 ├── layouts/
-├── static/
 ├── exampleSite/
 ├── theme.toml
 ├── hugo.toml.example
