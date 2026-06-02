@@ -22,7 +22,7 @@ Using a single `site.Title` everywhere is too rigid. A blog may want a concise b
 - Updated the base template to read `params.brand.browserTitle`.
 - Updated the header partial to read `params.brand.headerTitle`.
 - Updated the footer partial to read `params.brand.footerTitle`.
-- Added example values to `encanta/exampleSite/hugo.toml`.
+- Added example values to `exampleSite/hugo.toml`.
 
 ## Testing Notes
 

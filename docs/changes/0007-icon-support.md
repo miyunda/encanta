@@ -25,7 +25,7 @@ The theme should support site identity assets such as favicons and touch icons w
 ## Implementation Notes
 
 - Updated the head template to emit icon-related `<link>` tags.
-- Added example icon configuration to `encanta/exampleSite/hugo.toml`.
+- Added example icon configuration to `exampleSite/hugo.toml`.
 
 ## Testing Notes
 

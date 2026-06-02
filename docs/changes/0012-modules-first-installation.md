@@ -18,7 +18,7 @@ Hugo Modules provide a cleaner and more modern installation and upgrade path tha
 
 - Updated repository documentation to prefer Hugo Modules.
 - Updated the distribution note to assume a dedicated `encanta` theme repository path.
-- Added `encanta/hugo.toml.example` with commented examples for:
+- Added `hugo.toml.example` with commented examples for:
   - module import
   - brand settings
   - homepage sections

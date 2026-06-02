@@ -16,8 +16,8 @@ Button-only state changes are easy to miss during reading. Copy interactions sho
 
 ## Implementation Notes
 
-- Added a reusable toast helper in `encanta/assets/js/main.js`.
-- Added toast styling in `encanta/assets/css/main.css`.
+- Added a reusable toast helper in `assets/js/main.js`.
+- Added toast styling in `assets/css/main.css`.
 - Copy actions now trigger:
   - `代码已复制`
   - `复制失败`

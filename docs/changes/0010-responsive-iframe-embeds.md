@@ -19,8 +19,8 @@ Existing content already embeds NetEase Cloud Music and AcFun players as raw HTM
 
 ## Implementation Notes
 
-- Added iframe enhancement logic in `encanta/assets/js/main.js`.
-- Added provider-aware responsive embed styles in `encanta/assets/css/main.css`.
+- Added iframe enhancement logic in `assets/js/main.js`.
+- Added provider-aware responsive embed styles in `assets/css/main.css`.
 - The script now:
   - wraps article iframes in a theme container
   - removes legacy inline style attributes

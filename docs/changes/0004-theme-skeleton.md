@@ -33,7 +33,7 @@ The architecture and distribution model are defined. The next step is to turn th
   - an About section
   - a sample post using `<!-- more -->`
 - Added starter shortcodes compatible with the current media conventions.
-- After initial testing feedback, the theme files were moved under `encanta/` so Hugo can load them through `--themesDir ../blog-app --theme encanta`.
+- The theme skeleton is intended to live at the repository root in a standard Hugo theme layout.
 
 ## Testing Notes
 

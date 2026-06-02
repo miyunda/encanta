@@ -24,12 +24,12 @@
 .
 ├── README.md
 ├── README_CN.md
-├── encanta/
-│   ├── assets/
-│   ├── layouts/
-│   ├── static/
-│   ├── exampleSite/
-│   └── theme.toml
+├── assets/
+├── layouts/
+├── static/
+├── exampleSite/
+├── theme.toml
+├── hugo.toml.example
 ├── docs/
 │   ├── changes/
 │   ├── project-rules.md
@@ -45,7 +45,7 @@
 
 ## 当前状态
 
-当前仓库已建立项目纪律基线，完成第一版站点架构设计说明，并生成了位于 `encanta/` 下的 Hugo 主题骨架。
+当前仓库已建立项目纪律基线，完成第一版站点架构设计说明，并在仓库根目录形成了 Hugo 主题骨架。
 
 ## 计划中的分发方式
 

@@ -24,12 +24,12 @@
 .
 ├── README.md
 ├── README_CN.md
-├── encanta/
-│   ├── assets/
-│   ├── layouts/
-│   ├── static/
-│   ├── exampleSite/
-│   └── theme.toml
+├── assets/
+├── layouts/
+├── static/
+├── exampleSite/
+├── theme.toml
+├── hugo.toml.example
 ├── docs/
 │   ├── changes/
 │   ├── project-rules.md
@@ -45,7 +45,7 @@
 
 ## Current Status
 
-This repository now contains the project governance baseline, the initial architecture definition, and the first Hugo theme skeleton under `encanta/`.
+This repository now contains the project governance baseline, the initial architecture definition, and the first Hugo theme skeleton at the repository root.
 
 ## Planned Distribution
 

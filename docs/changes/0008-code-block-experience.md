@@ -25,8 +25,8 @@ Default Hugo/Chroma output is functional but not integrated with the theme. The 
 
 ## Implementation Notes
 
-- Added JavaScript enhancement for article code blocks in `encanta/assets/js/main.js`.
-- Added theme-aligned code block styling in `encanta/assets/css/main.css`.
+- Added JavaScript enhancement for article code blocks in `assets/js/main.js`.
+- Added theme-aligned code block styling in `assets/css/main.css`.
 - Long code blocks now auto-collapse when they exceed the current line threshold.
 
 ## Testing Notes
