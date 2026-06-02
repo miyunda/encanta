@@ -146,27 +146,26 @@ Third-party embedded players:
 ### Proposed Hugo Structure
 
 ```text
-encanta/
-  layouts/
-    _default/
-    partials/
-    shortcodes/
-  assets/
-    css/
-    js/
-  static/
-  exampleSite/
+layouts/
+  _default/
+  partials/
+  shortcodes/
+assets/
+  css/
+  js/
+static/
+exampleSite/
 ```
 
 Planned responsibilities:
 
-- `encanta/layouts/_default/`: base templates for list and single pages
-- `encanta/layouts/partials/`: header, footer, card, TOC, theme toggle, comments, and metadata partials
-- `encanta/layouts/shortcodes/`: `music`, `video-js`, and embed helpers
-- `encanta/assets/css/`: theme tokens, layout, typography, content styling
-- `encanta/assets/js/`: theme switching, reading progress, TOC behavior, Mermaid bootstrapping
-- `encanta/static/`: static assets that do not need pipeline processing
-- `encanta/exampleSite/`: reference site configuration and sample content
+- `layouts/_default/`: base templates for list and single pages
+- `layouts/partials/`: header, footer, card, TOC, theme toggle, comments, and metadata partials
+- `layouts/shortcodes/`: `music`, `video-js`, and embed helpers
+- `assets/css/`: theme tokens, layout, typography, content styling
+- `assets/js/`: theme switching, reading progress, TOC behavior, Mermaid bootstrapping
+- `static/`: static assets that do not need pipeline processing
+- `exampleSite/`: reference site configuration and sample content
 
 ### Deployment Direction
 

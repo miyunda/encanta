@@ -2,35 +2,31 @@
 
 ## Scope
 
-Reorganize the repository so Hugo can load `encanta` as a standard theme from a `themesDir`.
+Reorganize the repository so the repository root itself is the standard `encanta` theme root.
 
 ## Motivation
 
-The first local render attempt failed to resolve shortcodes because Hugo was pointed at `../blog-app` as a themes directory while the actual theme files were stored at the repository root. Hugo expects a theme named `encanta` to live under a matching subdirectory.
+The repository had drifted into an awkward nested layout. A standard Hugo theme repository should expose theme files directly at the repository root.
 
 ## Decisions
 
-- The actual loadable Hugo theme lives under `encanta/`.
-- Theme runtime files move under:
-  - `encanta/layouts/`
-  - `encanta/assets/`
-  - `encanta/exampleSite/`
-  - `encanta/theme.toml`
+- The repository root is the actual loadable Hugo theme root.
+- Theme runtime files live under:
+  - `layouts/`
+  - `assets/`
+  - `exampleSite/`
+  - `theme.toml`
 - Repository-level documentation remains at the root.
 
 ## Implementation Notes
 
-- Moved the theme skeleton into `encanta/`.
+- Promoted the nested theme files into the repository root.
 - Kept planning and governance documents at the repository root.
-- This layout supports the command:
-
-```bash
-hugo server --source blog-src --themesDir ../blog-app --theme encanta
-```
+- This layout matches common Hugo theme repositories such as FixIt.
 
 ## Testing Notes
 
-- This change addresses Hugo's theme discovery rules for `--themesDir`.
+- This change addresses Hugo Modules distribution and standard theme repository layout expectations.
 - A successful local render still depends on valid content front matter in the source site.
 
 ## Follow-ups

@@ -17,10 +17,10 @@ Comments are part of the article reading flow and were already part of the proje
 
 ## Implementation Notes
 
-- Added conditional Waline stylesheet loading in `encanta/layouts/_default/baseof.html`.
+- Added conditional Waline stylesheet loading in `layouts/_default/baseof.html`.
 - Added a `comments.html` partial with Waline initialization.
 - Mounted comments below previous/next article navigation in article pages.
-- Added theme-aligned Waline CSS variable overrides in `encanta/assets/css/main.css`.
+- Added theme-aligned Waline CSS variable overrides in `assets/css/main.css`.
 
 ## Testing Notes
 
