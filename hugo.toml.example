@@ -5,6 +5,15 @@ baseURL = "https://example.org/"
 languageCode = "zh-CN"
 title = "My Blog"
 
+# Article URL strategy.
+# This keeps post URLs at the site root, for example:
+# /my-first-post/
+# instead of:
+# /posts/my-first-post/
+# If `slug` is set in front matter, Hugo will use it first.
+[permalinks]
+  posts = "/:slugorfilename/"
+
 # If you install the theme through Hugo Modules, import it like this:
 [module]
   [[module.imports]]
@@ -15,6 +24,7 @@ title = "My Blog"
   description = "A personal blog powered by Hugo and the encanta theme."
 
   # Sections to show on the homepage list.
+  # This controls homepage content selection only; it does not force URLs to include /posts/.
   mainSections = ["posts"]
 
   # Optional default image used when a post does not define FeaturedImage.

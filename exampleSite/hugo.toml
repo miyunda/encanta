@@ -3,6 +3,9 @@ languageCode = "en-us"
 title = "encanta"
 theme = "encanta"
 
+[permalinks]
+  posts = "/:slugorfilename/"
+
 [params]
   description = "A personal blog theme with Rosé Pine palettes, adaptive cards, and rich Markdown support."
   mainSections = ["posts"]
