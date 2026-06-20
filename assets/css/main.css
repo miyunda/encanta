@@ -747,8 +747,16 @@ code {
     align-items: flex-start;
   }
 
+  .article-layout.article-layout-has-toc {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 900px;
+  }
+
   .article-toc {
     position: static;
+    width: 100%;
+    padding: 18px 20px;
   }
 
   .article-pagination {
