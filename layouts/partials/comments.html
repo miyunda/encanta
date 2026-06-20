@@ -1,6 +1,7 @@
 {{ if and .IsPage site.Params.waline.enable site.Params.waline.serverURL }}
   {{ $tocEnabled := ne site.Params.article.toc false }}
-  {{ $hasToc := and $tocEnabled .TableOfContents }}
+  {{ $toc := .TableOfContents }}
+  {{ $hasToc := and $tocEnabled (gt (len (findRE "<li[ >]" $toc)) 0) }}
   <section class="comments-section{{ if $hasToc }} comments-section-has-toc{{ end }}">
     <div class="comments-shell">
       <h2>评论</h2>

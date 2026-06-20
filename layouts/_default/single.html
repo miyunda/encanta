@@ -1,6 +1,7 @@
 {{ define "main" }}
   {{ $tocEnabled := ne site.Params.article.toc false }}
-  {{ $hasToc := and $tocEnabled .TableOfContents }}
+  {{ $toc := .TableOfContents }}
+  {{ $hasToc := and $tocEnabled (gt (len (findRE "<li[ >]" $toc)) 0) }}
   <article class="article">
     <header class="article-header">
       <p class="eyebrow">{{ .Date.Format "2006-01-02" }}</p>
@@ -18,7 +19,7 @@
       {{ if $hasToc }}
         <aside class="article-toc">
           <h2>Contents</h2>
-          {{ .TableOfContents }}
+          {{ $toc }}
         </aside>
       {{ end }}
 
