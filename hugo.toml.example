@@ -99,26 +99,14 @@ title = "My Blog"
     reaction = false
 
 # Main navigation shown in the header.
+# The theme already provides built-in items for Articles, Tags, Categories, and About.
+# Add entries here only when you want to extend the menu or override a built-in item by identifier.
 [menu]
   [[menu.main]]
-    name = "Articles"
-    url = "/"
+    identifier = "bb"
+    name = "BB"
+    url = "https://bb.example.com/"
     weight = 10
-
-  [[menu.main]]
-    name = "Tags"
-    url = "/tags/"
-    weight = 20
-
-  [[menu.main]]
-    name = "Categories"
-    url = "/categories/"
-    weight = 30
-
-  [[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 40
 
 # Required if you use raw HTML such as iframe embeds in Markdown content.
 [markup]
