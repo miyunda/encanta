@@ -46,6 +46,55 @@
 
 This repository now contains the project governance baseline, the initial architecture definition, and the first Hugo theme skeleton at the repository root.
 
+## Header Navigation Configuration
+
+The header ships with four built-in items:
+
+- `posts` -> `Articles`
+- `tags` -> `Tags`
+- `categories` -> `Categories`
+- `about` -> `About`
+
+You do not need to restate them in `hugo.toml`. Use `[menu.main]` only when you want to:
+
+- add an extra link such as an external microblog
+- override a built-in item by reusing the same `identifier`
+
+Example:
+
+```toml
+[menu]
+  [[menu.main]]
+    identifier = "bb"
+    name = "BB"
+    url = "https://bb.example.com/"
+    weight = 5
+
+  [[menu.main]]
+    identifier = "posts"
+    name = "Articles"
+    url = "/posts/"
+    weight = 10
+```
+
 ## Planned Distribution
 
 The preferred installation method for `encanta` is Hugo Modules. Git submodules and manual copies remain supported as secondary options.
+
+## Module Update Workflow
+
+If a site installs `encanta` through Hugo Modules, merging changes into `encanta/main` does not automatically update that site on the next deploy. The consuming site keeps using the theme revision pinned in its own `go.mod` and `go.sum` until it explicitly updates the dependency.
+
+Typical rollout flow:
+
+1. Merge the theme change into `encanta/main`.
+2. In the consuming site repository, update the module version:
+
+```bash
+hugo mod get -u github.com/miyunda/encanta
+```
+
+3. Review and commit the resulting `go.mod` and `go.sum` changes.
+4. Deploy the consuming site after that commit lands on its production branch.
+
+This version pinning is intentional. It keeps site builds reproducible and prevents unrelated theme changes from appearing in production without an explicit upgrade.
