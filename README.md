@@ -60,6 +60,12 @@ You do not need to restate them in `hugo.toml`. Use `[menu.main]` only when you 
 - add an extra link such as an external microblog
 - override a built-in item by reusing the same `identifier`
 
+The theme merges built-in items with user-defined `menu.main` entries:
+
+- built-in items stay visible by default
+- a custom entry with a new `identifier` is appended
+- a custom entry with the same `identifier` replaces the built-in one
+
 Example:
 
 ```toml
@@ -76,6 +82,18 @@ Example:
     url = "/posts/"
     weight = 10
 ```
+
+## About Page Compatibility
+
+The theme renders common standalone page setups, including:
+
+- `content/about.md`
+- `content/about/_index.md`
+- pages with `type = "about"`
+
+Expected output URL is `/about/`.
+
+If `/about/` opens but shows an empty page, first check whether the consuming site still contains a legacy override such as `layouts/about/single.html`. Hugo gives site-level templates higher priority than theme templates, so an old override can shadow Encanta's `about` template and prevent `content/about.md` from rendering. Removing the stale override lets the theme's built-in `about` layout take effect again.
 
 ## Planned Distribution
 
