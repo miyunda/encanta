@@ -42,18 +42,6 @@
       {{ partial "comments.html" . }}
     </article>
   {{ else }}
-    <article class="page-single">
-      <section class="page-intro">
-        <div>
-          <p class="eyebrow">Page</p>
-          <h1>{{ .Title }}</h1>
-        </div>
-        <p class="lede">{{ .Description | default (.Summary | plainify) }}</p>
-      </section>
-
-      <div class="article-body">
-        {{ .Content }}
-      </div>
-    </article>
+    {{ partial "standalone-page.html" (dict "page" . "eyebrow" "Page") }}
   {{ end }}
 {{ end }}

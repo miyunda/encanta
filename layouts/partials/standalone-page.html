@@ -1,0 +1,13 @@
+<article class="page-single">
+  <section class="page-intro">
+    <div>
+      <p class="eyebrow">{{ .eyebrow }}</p>
+      <h1>{{ .page.Title }}</h1>
+    </div>
+    <p class="lede">{{ .page.Description | default (.page.Summary | plainify) }}</p>
+  </section>
+
+  <div class="article-body">
+    {{ .page.Content }}
+  </div>
+</article>
