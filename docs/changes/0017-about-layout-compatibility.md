@@ -12,3 +12,5 @@ Add explicit `layouts/about/single.html` and `layouts/about/list.html` templates
 ## Result
 
 The theme can render common about-page setups without requiring the consuming site to add custom templates.
+
+If a consuming site still carries an older `layouts/about/single.html` override from another theme, Hugo will prefer that site-level template and may still render `/about/` incorrectly or as an empty page. In that case the stale override should be removed so the theme's `about` templates can run.
