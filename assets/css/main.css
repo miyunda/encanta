@@ -234,6 +234,37 @@ code {
   gap: 24px;
 }
 
+.taxonomy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.taxonomy-card {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  box-shadow: var(--shadow-soft);
+  padding: 24px;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.taxonomy-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 60px var(--shadow-color);
+}
+
+.taxonomy-card h2 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+}
+
+.taxonomy-card p {
+  margin: 0;
+  color: var(--text-soft);
+}
+
 .post-card-link {
   display: block;
   overflow: hidden;
@@ -297,6 +328,11 @@ code {
 }
 
 .article {
+  display: grid;
+  gap: 28px;
+}
+
+.page-single {
   display: grid;
   gap: 28px;
 }

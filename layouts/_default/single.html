@@ -1,42 +1,59 @@
 {{ define "main" }}
-  {{ $tocEnabled := ne site.Params.article.toc false }}
-  {{ $toc := .TableOfContents }}
-  {{ $hasToc := and $tocEnabled (gt (len (findRE "<li[ >]" $toc)) 0) }}
-  <article class="article">
-    <header class="article-header">
-      <p class="eyebrow">{{ .Date.Format "2006-01-02" }}</p>
-      <h1>{{ .Title }}</h1>
-      {{ with .Params.tags }}
-        <ul class="article-tags" aria-label="Tags">
-          {{ range . }}
-            <li>#{{ . }}</li>
-          {{ end }}
-        </ul>
-      {{ end }}
-    </header>
+  {{ $isMainSection := in site.Params.mainSections .Type }}
+  {{ if $isMainSection }}
+    {{ $tocEnabled := ne site.Params.article.toc false }}
+    {{ $toc := .TableOfContents }}
+    {{ $hasToc := and $tocEnabled (gt (len (findRE "<li[ >]" $toc)) 0) }}
+    <article class="article">
+      <header class="article-header">
+        <p class="eyebrow">{{ .Date.Format "2006-01-02" }}</p>
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.tags }}
+          <ul class="article-tags" aria-label="Tags">
+            {{ range . }}
+              <li>#{{ . }}</li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      </header>
 
-    <div class="article-layout{{ if $hasToc }} article-layout-has-toc{{ end }}">
-      {{ if $hasToc }}
-        <aside class="article-toc">
-          <h2>Contents</h2>
-          {{ $toc }}
-        </aside>
-      {{ end }}
+      <div class="article-layout{{ if $hasToc }} article-layout-has-toc{{ end }}">
+        {{ if $hasToc }}
+          <aside class="article-toc">
+            <h2>Contents</h2>
+            {{ $toc }}
+          </aside>
+        {{ end }}
+
+        <div class="article-body">
+          {{ .Content }}
+        </div>
+      </div>
+
+      <nav class="article-pagination" aria-label="Article navigation">
+        {{ with .PrevInSection }}
+          <a class="article-nav-link" href="{{ .RelPermalink }}">← {{ .Title }}</a>
+        {{ end }}
+        {{ with .NextInSection }}
+          <a class="article-nav-link article-nav-link-next" href="{{ .RelPermalink }}">{{ .Title }} →</a>
+        {{ end }}
+      </nav>
+
+      {{ partial "comments.html" . }}
+    </article>
+  {{ else }}
+    <article class="page-single">
+      <section class="page-intro">
+        <div>
+          <p class="eyebrow">Page</p>
+          <h1>{{ .Title }}</h1>
+        </div>
+        <p class="lede">{{ .Description | default (.Summary | plainify) }}</p>
+      </section>
 
       <div class="article-body">
         {{ .Content }}
       </div>
-    </div>
-
-    <nav class="article-pagination" aria-label="Article navigation">
-      {{ with .PrevInSection }}
-        <a class="article-nav-link" href="{{ .RelPermalink }}">← {{ .Title }}</a>
-      {{ end }}
-      {{ with .NextInSection }}
-        <a class="article-nav-link article-nav-link-next" href="{{ .RelPermalink }}">{{ .Title }} →</a>
-      {{ end }}
-    </nav>
-
-    {{ partial "comments.html" . }}
-  </article>
+    </article>
+  {{ end }}
 {{ end }}
