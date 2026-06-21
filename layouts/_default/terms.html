@@ -1,0 +1,23 @@
+{{ define "main" }}
+  <section class="page-intro">
+    <div>
+      <p class="eyebrow">Taxonomies</p>
+      <h1>{{ .Title }}</h1>
+    </div>
+    <p class="lede">{{ .Description | default (printf "Browse all %s used across the site." (.Title | lower)) }}</p>
+  </section>
+
+  <section class="taxonomy-grid" aria-label="{{ .Title }}">
+    {{ range .Pages.ByTitle }}
+      <a class="taxonomy-card" href="{{ .RelPermalink }}">
+        <h2>{{ .LinkTitle }}</h2>
+        <p>{{ .Pages.Len }} {{ cond (eq .Pages.Len 1) "post" "posts" }}</p>
+      </a>
+    {{ else }}
+      <article class="empty-state">
+        <h2>No entries yet</h2>
+        <p>Add taxonomy values in your post front matter to populate this page.</p>
+      </article>
+    {{ end }}
+  </section>
+{{ end }}

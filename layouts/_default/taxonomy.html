@@ -1,0 +1,21 @@
+{{ define "main" }}
+  {{ $pages := .Pages }}
+  <section class="page-intro">
+    <div>
+      <p class="eyebrow">{{ .Data.Plural | humanize }}</p>
+      <h1>{{ .Title }}</h1>
+    </div>
+    <p class="lede">{{ .Description | default (printf "Browse posts filed under %s." .Title) }}</p>
+  </section>
+
+  <section class="post-grid" aria-label="Article list">
+    {{ range $pages.ByDate.Reverse }}
+      {{ partial "post-card.html" . }}
+    {{ else }}
+      <article class="empty-state">
+        <h2>No posts yet</h2>
+        <p>No posts are currently associated with this taxonomy term.</p>
+      </article>
+    {{ end }}
+  </section>
+{{ end }}
