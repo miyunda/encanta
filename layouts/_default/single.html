@@ -8,10 +8,10 @@
       <header class="article-header">
         <p class="eyebrow">{{ .Date.Format "2006-01-02" }}</p>
         <h1>{{ .Title }}</h1>
-        {{ with .Params.tags }}
+        {{ with .GetTerms "tags" }}
           <ul class="article-tags" aria-label="Tags">
             {{ range . }}
-              <li>#{{ . }}</li>
+              <li><a href="{{ .RelPermalink }}" rel="tag">#{{ .LinkTitle }}</a></li>
             {{ end }}
           </ul>
         {{ end }}
