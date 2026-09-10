@@ -10,9 +10,10 @@
 
 - Direct commits to `main` are forbidden.
 - All changes must be developed in topic branches.
-- Branch names must describe the change clearly.
+- Branch names must use `<type>/<short-description>`, with a lowercase, hyphen-separated description of the actual change (for example, `feat/foo` or `fix/bar`).
+- Use the change type directly as the prefix; do not add an agent or tool prefix such as `codex/`.
 
-Recommended branch prefixes:
+Branch prefixes:
 
 - `feat/` for features
 - `fix/` for bug fixes
