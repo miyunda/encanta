@@ -266,6 +266,7 @@ code {
 }
 
 .post-card-link {
+  position: relative;
   display: block;
   overflow: hidden;
   border: 1px solid var(--border);
@@ -278,6 +279,31 @@ code {
 .post-card-link:hover {
   transform: translateY(-4px);
   box-shadow: 0 26px 60px var(--shadow-color);
+}
+
+/* Keep the card clickable while allowing its tag to open a separate page. */
+.post-card-title-link::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+.post-card-tag {
+  position: relative;
+  z-index: 1;
+}
+
+.post-card-link:focus-within {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.post-card-tag:hover,
+.post-card-tag:focus-visible,
+.article-tags a:hover,
+.article-tags a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .post-card-media {

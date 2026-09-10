@@ -6,7 +6,7 @@
   {{ $manualSummary = index (split $normalizedContent "<!--more-->") 0 | markdownify | plainify | strings.TrimSpace }}
 {{ end }}
 <article class="post-card">
-  <a class="post-card-link" href="{{ .RelPermalink }}">
+  <div class="post-card-link">
     <div class="post-card-media">
       {{ if $image }}
         <img src="{{ $image }}" alt="" loading="lazy">
@@ -16,7 +16,7 @@
     </div>
     <div class="post-card-body">
       <p class="post-card-date">{{ .Date.Format "2006-01-02" }}</p>
-      <h2>{{ .Title }}</h2>
+      <h2><a class="post-card-title-link" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
       <p class="post-card-summary">
         {{ with $manualSummary }}
           {{ . | truncate 180 }}
@@ -32,10 +32,10 @@
         {{ with .Params.categories }}
           <span>{{ index . 0 }}</span>
         {{ end }}
-        {{ with .Params.tags }}
-          <span>#{{ index . 0 }}</span>
+        {{ range first 1 (.GetTerms "tags") }}
+          <a class="post-card-tag" href="{{ .RelPermalink }}" rel="tag">#{{ .LinkTitle }}</a>
         {{ end }}
       </div>
     </div>
-  </a>
+  </div>
 </article>

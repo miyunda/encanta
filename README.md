@@ -12,7 +12,7 @@
 ## Working Principles
 
 - Never commit directly to `main`.
-- Use descriptive branch names that reflect the actual change.
+- Use `<type>/<short-description>` branch names, such as `feat/foo` or `fix/bar`, without an agent or tool prefix. See [`docs/project-rules.md`](docs/project-rules.md) for the branch policy.
 - Record design, implementation, and testing decisions in `docs/`.
 - Maintain a long-term roadmap in [`docs/roadmap.md`](docs/roadmap.md).
 - Keep the main project documentation in English and provide [`README_CN.md`](README_CN.md) for Chinese readers.

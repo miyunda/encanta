@@ -12,7 +12,7 @@
 ## 工作纪律
 
 - 严禁直接向 `main` 分支提交。
-- 分支名称必须能够体现实际更改内容。
+- 分支名称采用 `<type>/<short-description>`，例如 `feat/foo` 或 `fix/bar`，不添加代理或工具前缀。完整规则见 [`docs/project-rules.md`](docs/project-rules.md)。
 - 设计、实施、测试等环节必须在 `docs/` 中留痕。
 - 长期规划维护在 [`docs/roadmap.md`](docs/roadmap.md)。
 - 主文档使用英语，同时保留 [`README_CN.md`](README_CN.md) 为中文用户提供帮助。
