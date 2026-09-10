@@ -57,3 +57,24 @@ or:
 ```yaml
 date: 2026-05-31T18:10:00+08:00
 ```
+
+## Waline Configuration Regression
+
+With Hugo and Node.js installed, run from the theme repository:
+
+```bash
+node tests/waline-config.mjs
+```
+
+For a Hugo binary outside `PATH`:
+
+```bash
+HUGO_BIN=/path/to/hugo node tests/waline-config.mjs
+```
+
+The test builds temporary example sites and evaluates the generated initialization
+script with a stubbed Waline `init`. It checks default/custom option types and
+values, safe JavaScript escaping, and disabled/missing-server behavior. It does
+not contact a Waline server or submit comments. For live verification, open an
+article as a logged-out visitor and confirm the editor and submit button appear;
+check browser console/network errors if they do not.
