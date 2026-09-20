@@ -65,6 +65,35 @@ pageSize = 20`));
   assert.equal(custom.pageview, true);
   assert.equal(custom.pageSize, 20);
 
+  const reactions = options(build(`enable = true
+serverURL = "https://waline.example.com"
+reaction = [
+  "https://unpkg.com/@waline/emojis@1.1.0/weibo/weibo_heart_eyes.png",
+  "https://unpkg.com/@waline/emojis@1.1.0/weibo/weibo_dog_joy.png",
+  "https://unpkg.com/@waline/emojis@1.1.0/weibo/weibo_dog_consider.png",
+  "https://unpkg.com/@waline/emojis@1.1.0/weibo/weibo_sob.png",
+]
+
+[params.waline.locale]
+reactionTitle = "文章反馈"
+reaction0 = "喜欢"
+reaction1 = "开心"
+reaction2 = "思考"
+reaction3 = "抱抱"`));
+  assert.deepEqual(reactions.reaction, [
+    'https://unpkg.com/@waline/emojis@1.1.0/weibo/weibo_heart_eyes.png',
+    'https://unpkg.com/@waline/emojis@1.1.0/weibo/weibo_dog_joy.png',
+    'https://unpkg.com/@waline/emojis@1.1.0/weibo/weibo_dog_consider.png',
+    'https://unpkg.com/@waline/emojis@1.1.0/weibo/weibo_sob.png',
+  ]);
+  assert.deepEqual(reactions.locale, {
+    reactionTitle: '文章反馈',
+    reaction0: '喜欢',
+    reaction1: '开心',
+    reaction2: '思考',
+    reaction3: '抱抱',
+  });
+
   for (const settings of ['enable = false\nserverURL = "https://waline.example.com"', 'enable = true']) {
     assert.doesNotMatch(build(settings), /id="waline"|@waline\/client/);
   }
