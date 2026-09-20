@@ -30,6 +30,15 @@
       search: {{ site.Params.waline.search | default false }},
       recaptchaV3Key: {{ site.Params.waline.recaptchaV3Key | default "" }},
       reaction: {{ site.Params.waline.reaction | default false }},
+      {{ with site.Params.waline.locale }}
+      locale: {
+        reactionTitle: {{ .reactiontitle }},
+        reaction0: {{ .reaction0 }},
+        reaction1: {{ .reaction1 }},
+        reaction2: {{ .reaction2 }},
+        reaction3: {{ .reaction3 }},
+      },
+      {{ end }}
       path: window.location.pathname,
     });
   </script>
