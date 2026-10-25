@@ -1,0 +1,4 @@
+{{- .Page.Store.Set "hasMermaid" true -}}
+<div class="mermaid-diagram">
+  <pre class="mermaid">{{ .Inner | htmlEscape | safeHTML }}</pre>
+</div>

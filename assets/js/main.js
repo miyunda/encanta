@@ -109,6 +109,8 @@ const showToast = (message, state = "info") => {
 
 const enhanceCodeBlocks = () => {
   document.querySelectorAll(".article-body pre").forEach((pre) => {
+    if (pre.classList.contains("mermaid")) return;
+
     const sourceBlock = pre.parentElement?.classList.contains("highlight")
       ? pre.parentElement
       : pre;

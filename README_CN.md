@@ -46,6 +46,23 @@
 
 当前仓库已建立项目纪律基线，完成第一版站点架构设计说明，并在仓库根目录形成了 Hugo 主题骨架。
 
+## Mermaid 流程图与图表
+
+在 Markdown 中使用标记为 `mermaid` 的代码围栏，encanta 会将其渲染为图表。
+图表内容使用 [Mermaid 官方语法](https://mermaid.js.org/intro/syntax-reference.html)，
+包括图内 YAML 配置和 `classDef` 配色规则；主题没有另设一套图表语法。
+
+````markdown
+```mermaid
+flowchart TB
+    A[浏览器] --> B[Cloudflare] --> C[OpenBao]
+```
+````
+
+流程图中的 `TB` 表示从上到下，改成 `LR` 则从左到右。其他写法可查阅
+[Mermaid 流程图语法](https://mermaid.js.org/syntax/flowchart.html)。主题目前仅在含图表的页面
+通过 jsDelivr 加载 Mermaid 12.2.0，并使用其 `strict` 安全级别；图表内的交互式点击功能因此不可用。
+
 ## 导航菜单配置
 
 头部导航自带四个默认项：
