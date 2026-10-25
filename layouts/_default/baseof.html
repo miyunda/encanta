@@ -31,5 +31,15 @@
     </div>
     {{ $js := resources.Get "js/main.js" | minify | fingerprint }}
     <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+    {{ if .Store.Get "hasMermaid" }}
+      <script type="module">
+        import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@12.2.0/dist/mermaid.esm.min.mjs";
+        mermaid.initialize({
+          startOnLoad: true,
+          securityLevel: "strict",
+          flowchart: { useMaxWidth: false },
+        });
+      </script>
+    {{ end }}
   </body>
 </html>

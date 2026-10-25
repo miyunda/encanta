@@ -46,6 +46,26 @@
 
 This repository now contains the project governance baseline, the initial architecture definition, and the first Hugo theme skeleton at the repository root.
 
+## Mermaid Diagrams
+
+Encanta renders Markdown code fences labeled `mermaid` as diagrams. Write diagram
+content using [Mermaid's syntax](https://mermaid.js.org/intro/syntax-reference.html),
+including per-diagram YAML configuration and `classDef` color rules. Encanta does
+not add a separate diagram syntax.
+
+````markdown
+```mermaid
+flowchart TB
+    A[Browser] --> B[Cloudflare] --> C[OpenBao]
+```
+````
+
+In a flowchart, `TB` lays out nodes from top to bottom; use `LR` for left to right.
+See the [Mermaid flowchart reference](https://mermaid.js.org/syntax/flowchart.html)
+for other syntax. The theme currently loads Mermaid 12.2.0 from jsDelivr on pages
+with diagrams. It uses Mermaid's `strict` security level, which disables
+interactive click behavior in diagrams.
+
 ## Header Navigation Configuration
 
 The header ships with four built-in items:
